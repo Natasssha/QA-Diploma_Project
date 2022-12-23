@@ -3,16 +3,16 @@ ___
 Было проведено автоматизированное тестирование сервиса покупки тура, взаимодействующего с СУБД и API Банка.  
 Общее количество тест-кейсов - 52.
 ___
-#### Итоги тестирования:
 Из 52 тест-кейсов:
-успешно: 26 тест-кейсов.
-неуспешно: 26 тест-кейсов.
-C:\Users\nika_\IdeaProjects\qa-diploma_project\documents\screenshots\Allure.png
-C:\Users\nika_\IdeaProjects\qa-diploma_project\documents\screenshots\AllureR.png
+успешно: 26 тест-кейсов.  
+неуспешно: 26 тест-кейсов.         
+![image](https://user-images.githubusercontent.com/102718243/209377206-695375ef-620d-470e-b6a5-75893298ca5d.png)
+![image](https://user-images.githubusercontent.com/102718243/209377514-6136be3e-587d-430d-a1ec-ff8c6c697139.png)
+
 ##### API - тесты
 
 * Проведены 4 теста, все завершились успешно.  
-  C:\Users\nika_\IdeaProjects\qa-diploma_project\documents\screenshots\AllureApi .png
+![image](https://user-images.githubusercontent.com/102718243/209377408-6f9ab464-2556-405b-b703-d358742cdd0a.png)
 
 __
 ##### Рекомендации:
