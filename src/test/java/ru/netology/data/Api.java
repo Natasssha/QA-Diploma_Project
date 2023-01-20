@@ -5,13 +5,13 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 
 public class Api {
 
     public static RequestSpecification requestSpecification = new RequestSpecBuilder()
-            .setBaseUri("http://localhost")
-            .setPort(8080)
+            .setBaseUri(baseURI)
+            .setPort(port)
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)

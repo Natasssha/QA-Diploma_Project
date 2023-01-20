@@ -3,14 +3,9 @@ package ru.netology.data;
 import com.github.javafaker.Faker;
 import lombok.NoArgsConstructor;
 import lombok.Value;
-import org.joda.time.LocalDate;
-
-import java.text.SimpleDateFormat;
-
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Locale;
-
 
 @NoArgsConstructor
 public class Data {
