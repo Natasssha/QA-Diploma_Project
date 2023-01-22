@@ -1,12 +1,10 @@
 package ru.netology.tests.paymentoncredit;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static ru.netology.data.Data.getCorrectlyCompletedApprovedCardForm;
@@ -24,16 +22,16 @@ public class HappyPathPayOnCredit extends TestBaseUI {
 
     @Test
     public void successResultIfApprovedCardsCreditForm() {
-        val cardData = getCorrectlyCompletedApprovedCardForm();
+        var cardData = getCorrectlyCompletedApprovedCardForm();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitSuccessResult();
 
-        val expected = "APPROVED";
-        val actual = getCardStatusForCreditRequest();
+        var expected = "APPROVED";
+        var actual = getCardStatusForCreditRequest();
         assertEquals(expected, actual);
 
-        val bankIdExpected = getBankId();
-        val paymentIdActual = getPaymentId();
+        var bankIdExpected = getBankId();
+        var paymentIdActual = getPaymentId();
         assertNotNull(bankIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(bankIdExpected, paymentIdActual);
@@ -41,16 +39,16 @@ public class HappyPathPayOnCredit extends TestBaseUI {
 
     @Test
     public void failResultIfDeclinedCardsCreditForm() {
-        val cardData = getCorrectlyCompletedDeclinedCardForm();
+        var cardData = getCorrectlyCompletedDeclinedCardForm();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitSuccessResult();
 
-        val statusExpected = "DECLINED";
-        val statusActual = getCardStatusForCreditRequest();
+        var statusExpected = "DECLINED";
+        var statusActual = getCardStatusForCreditRequest();
         assertEquals(statusExpected, statusActual);
 
-        val bankIdExpected = getBankId();
-        val paymentIdActual = getPaymentId();
+        var bankIdExpected = getBankId();
+        var paymentIdActual = getPaymentId();
         assertNotNull(bankIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(bankIdExpected, paymentIdActual);

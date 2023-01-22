@@ -1,12 +1,10 @@
 package ru.netology.tests.paymentoncredit;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
-
 import static ru.netology.data.Data.*;
 
 public class NumberCardFieldPayOnCredit extends TestBaseUI {
@@ -21,14 +19,14 @@ public class NumberCardFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testForDeclinedCardPayByCard() {
-        val cardData = getFormWithIncorrectNumberCard();
+        var cardData = getFormWithIncorrectNumberCard();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitError();
     }
 
     @Test
     public void testWithDeficientNumbersCardPayByCard() {
-        val cardData = getFormWithDeficientNumberCard();
+        var cardData = getFormWithDeficientNumberCard();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitThisFieldIsRequired();
     }
@@ -36,7 +34,7 @@ public class NumberCardFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testWithEmptyNumberCardPayByCard() {
-        val cardData = getFormWithEmptyFieldNumberCard();
+        var cardData = getFormWithEmptyFieldNumberCard();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }

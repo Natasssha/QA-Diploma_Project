@@ -1,12 +1,10 @@
 package ru.netology.tests.paymentbycard;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static ru.netology.data.Data.getCorrectlyCompletedApprovedCardForm;
@@ -24,20 +22,20 @@ public class HappyPathPayByCard extends TestBaseUI {
 
     @Test
     public void successResultIfApprovedCardsBuyForm() {
-        val cardData = getCorrectlyCompletedApprovedCardForm();
+        var cardData = getCorrectlyCompletedApprovedCardForm();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitSuccessResult();
 
-        val statusExpected = "APPROVED";
-        val statusActual = getCardStatusForPayment();
+        var statusExpected = "APPROVED";
+        var statusActual = getCardStatusForPayment();
         assertEquals(statusExpected, statusActual);
 
-        val expectedAmount = "45000";
-        val actualAmount = getAmountPayment();
+        var expectedAmount = "45000";
+        var actualAmount = getAmountPayment();
         assertEquals(expectedAmount, actualAmount);
 
-        val expectedId = getTransactionId();
-        val actualId = getPaymentId();
+        var expectedId = getTransactionId();
+        var actualId = getPaymentId();
         assertNotNull(actualId);
         assertNotNull(expectedId);
         assertEquals(expectedId, actualId);
@@ -45,16 +43,16 @@ public class HappyPathPayByCard extends TestBaseUI {
 
     @Test
     public void failResultIfDeclinedCardBuyForm() {
-        val cardData = getCorrectlyCompletedDeclinedCardForm();
+        var cardData = getCorrectlyCompletedDeclinedCardForm();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitSuccessResult();
 
-        val statusExpected = "DECLINED";
-        val statusActual = getCardStatusForPayment();
+        var statusExpected = "DECLINED";
+        var statusActual = getCardStatusForPayment();
         assertEquals(statusExpected, statusActual);
 
-        val expectedId = getBankId();
-        val actualId = getPaymentId();
+        var expectedId = getBankId();
+        var actualId = getPaymentId();
         assertNotNull(expectedId);
         assertNotNull(actualId);
         assertEquals(expectedId, actualId);

@@ -1,9 +1,7 @@
 package ru.netology.tests.paymentoncredit;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
@@ -21,7 +19,7 @@ public class MonthFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testTheMonthFieldIsEmpty() {
-        val cardData = getFormWithEmptyFieldMonth();
+        var cardData = getFormWithEmptyFieldMonth();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitThisFieldIsRequired();
     }
@@ -29,21 +27,21 @@ public class MonthFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testIncorrectSpellingOfTheCardValidityMonth() {
-        val cardData = getFormWithInvalidMonth();
+        var cardData = getFormWithInvalidMonth();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitInvalidCardExpirationDate();
     }
 
     @Test
     public void InvalidMonthOfCardValidit() {
-        val cardData = getFormWithIncorrectFieldMonthOneNumber();
+        var cardData = getFormWithIncorrectFieldMonthOneNumber();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }
 
     @Test
     public void testSendARequestWithAnInvalidValueInTheFieldZero() {
-        val cardData = getFormWithIncorrectFieldMonthZero();
+        var cardData = getFormWithIncorrectFieldMonthZero();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitInvalidCardExpirationDate();
     }

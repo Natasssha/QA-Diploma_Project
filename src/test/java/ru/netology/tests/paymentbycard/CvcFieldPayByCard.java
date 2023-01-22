@@ -1,12 +1,10 @@
 package ru.netology.tests.paymentbycard;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
-
 import static ru.netology.data.Data.*;
 
 public class  CvcFieldPayByCard extends TestBaseUI {
@@ -20,14 +18,14 @@ public class  CvcFieldPayByCard extends TestBaseUI {
 
     @Test
     public void testWithEmptyCvcFieldPayByCard() {
-        val cardData = getFormWithEmptyFieldCvc();
+        var cardData = getFormWithEmptyFieldCvc();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitThisFieldIsRequired();
     }
 
     @Test
     public void testWithIncorrectFillingInTheCvcFieldPayByCard() {
-        val cardData = getFormWithIncorrectCvc();
+        var cardData = getFormWithIncorrectCvc();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }

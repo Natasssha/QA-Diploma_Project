@@ -1,12 +1,10 @@
 package ru.netology.tests.paymentoncredit;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
-
 import static ru.netology.data.Data.*;
 
 
@@ -22,7 +20,7 @@ public class HolderFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testEmptyOwnerField() {
-        val cardData = getFormWithEmptyFieldHolder();
+        var cardData = getFormWithEmptyFieldHolder();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitThisFieldIsRequired();
     }
@@ -30,35 +28,35 @@ public class HolderFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testNumbersInTheOwnerField() {
-        val cardData = getFormWithNumbersInFieldHolder();
+        var cardData = getFormWithNumbersInFieldHolder();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }
 
     @Test
     public void testCharactersInTheOwnerField() {
-        val cardData = getFormSymbolBersInTheHolderField();
+        var cardData = getFormSymbolBersInTheHolderField();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }
 
     @Test
     public void testSpacesBetween() {
-        val cardData = getFormWithManySpaceInFieldHolder();
+        var cardData = getFormWithManySpaceInFieldHolder();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }
 
     @Test
     public void testCyrillicAlphabet() {
-        val cardData = getFormWithHolderRu();
+        var cardData = getFormWithHolderRu();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }
 
     @Test
     public void test50Symbols() {
-        val cardData = getFormWithLongNameInFieldHolder();
+        var cardData = getFormWithLongNameInFieldHolder();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }
@@ -66,7 +64,7 @@ public class HolderFieldPayOnCredit extends TestBaseUI {
 
     @Test
     public void testOneLetter() {
-        val cardData = getFormWithShortNameInFieldHolder();
+        var cardData = getFormWithShortNameInFieldHolder();
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitIncorrectFormat();
     }

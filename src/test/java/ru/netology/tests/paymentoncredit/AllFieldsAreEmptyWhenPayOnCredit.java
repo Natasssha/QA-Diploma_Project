@@ -3,7 +3,6 @@ package ru.netology.tests.paymentoncredit;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
@@ -24,7 +23,7 @@ public class AllFieldsAreEmptyWhenPayOnCredit extends TestBaseUI {
 
     @Test
     public void testWithEmptyAllFieldsPayOnCredit() {
-        val cardData = getFormWithAllEmptyFields();
+        var cardData = getFormWithAllEmptyFields();
         purchaseForm.completedPaymentForm(cardData);
         final ElementsCollection emptyField = $$(".input__sub");
         final SelenideElement cardNumberField = emptyField.get(1);

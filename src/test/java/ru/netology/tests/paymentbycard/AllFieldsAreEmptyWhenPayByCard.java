@@ -3,13 +3,11 @@ package ru.netology.tests.paymentbycard;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.pages.MainPage;
 import ru.netology.pages.PurchaseForm;
 import ru.netology.tests.TestBaseUI;
-
 import static com.codeborne.selenide.Selenide.$$;
 import static ru.netology.data.Data.getFormWithAllEmptyFields;
 
@@ -24,7 +22,7 @@ public class AllFieldsAreEmptyWhenPayByCard extends TestBaseUI {
 
     @Test
     public void testWithEmptyAllFieldsPayByCard() {
-        val cardData = getFormWithAllEmptyFields();
+        var cardData = getFormWithAllEmptyFields();
         purchaseForm.completedPaymentForm(cardData);
         final ElementsCollection emptyField = $$(".input__sub");
         final SelenideElement cardNumberField = emptyField.get(1);
