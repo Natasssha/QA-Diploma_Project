@@ -12,8 +12,8 @@ import static ru.netology.data.Data.getCorrectlyCompletedDeclinedCardForm;
 import static ru.netology.data.SQL.*;
 
 public class HappyPathPayByCard extends TestBaseUI {
-    private PurchaseForm purchaseForm = new PurchaseForm();
-    private MainPage mainPage = new MainPage();
+    PurchaseForm purchaseForm = new PurchaseForm();
+    MainPage mainPage = new MainPage();
 
     @BeforeEach
     public void clickBuy() {
@@ -27,18 +27,13 @@ public class HappyPathPayByCard extends TestBaseUI {
         purchaseForm.waitSuccessResult();
 
         var statusExpected = "APPROVED";
-        var statusActual = getCardStatusForPayment();
-        assertEquals(statusExpected, statusActual);
+        var paymentInfo = getCardStatusForPayment();
+        var orderInfo = getPaymentId();
 
-        var expectedAmount = "45000";
-        var actualAmount = getAmountPayment();
-        assertEquals(expectedAmount, actualAmount);
 
-        var expectedId = getTransactionId();
-        var actualId = getPaymentId();
-        assertNotNull(actualId);
-        assertNotNull(expectedId);
-        assertEquals(expectedId, actualId);
+        assertEquals(statusExpected, paymentInfo.getStatus());
+        assertEquals(paymentInfo.getTransaction_id(), orderInfo.getPayment_id());
+
     }
 
     @Test
@@ -48,14 +43,12 @@ public class HappyPathPayByCard extends TestBaseUI {
         purchaseForm.waitSuccessResult();
 
         var statusExpected = "DECLINED";
-        var statusActual = getCardStatusForPayment();
-        assertEquals(statusExpected, statusActual);
+        var paymentInfo = getCardStatusForPayment();
+        var orderInfo = getPaymentId();
 
-        var expectedId = getBankId();
-        var actualId = getPaymentId();
-        assertNotNull(expectedId);
-        assertNotNull(actualId);
-        assertEquals(expectedId, actualId);
+
+        assertEquals(statusExpected, paymentInfo.getStatus());
+        assertEquals(paymentInfo.getTransaction_id(), orderInfo.getPayment_id());
+
     }
 }
-

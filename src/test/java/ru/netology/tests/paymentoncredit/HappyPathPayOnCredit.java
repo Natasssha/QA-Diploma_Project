@@ -12,8 +12,8 @@ import static ru.netology.data.Data.getCorrectlyCompletedDeclinedCardForm;
 import static ru.netology.data.SQL.*;
 
 public class HappyPathPayOnCredit extends TestBaseUI {
-    private PurchaseForm purchaseForm = new PurchaseForm();
-    private MainPage mainPage = new MainPage();
+    PurchaseForm purchaseForm = new PurchaseForm();
+    MainPage mainPage = new MainPage();
 
     @BeforeEach
     public void clickBuy() {
@@ -27,14 +27,13 @@ public class HappyPathPayOnCredit extends TestBaseUI {
         purchaseForm.waitSuccessResult();
 
         var expected = "APPROVED";
-        var actual = getCardStatusForCreditRequest();
-        assertEquals(expected, actual);
+        var creditRequestInfo = getCardStatusForCreditRequest();
+        var orderInfo = getPaymentId();
 
-        var bankIdExpected = getBankId();
-        var paymentIdActual = getPaymentId();
-        assertNotNull(bankIdExpected);
-        assertNotNull(paymentIdActual);
-        assertEquals(bankIdExpected, paymentIdActual);
+
+        assertEquals(expected, creditRequestInfo.getStatus());
+        assertEquals(creditRequestInfo.getBank_id(), orderInfo.getCredit_id());
+
     }
 
     @Test
@@ -43,15 +42,14 @@ public class HappyPathPayOnCredit extends TestBaseUI {
         purchaseForm.completedPaymentForm(cardData);
         purchaseForm.waitSuccessResult();
 
-        var statusExpected = "DECLINED";
-        var statusActual = getCardStatusForCreditRequest();
-        assertEquals(statusExpected, statusActual);
+        var expected = "DECLINED";
+        var creditRequestInfo = getCardStatusForCreditRequest();
+        var orderInfo = getPaymentId();
 
-        var bankIdExpected = getBankId();
-        var paymentIdActual = getPaymentId();
-        assertNotNull(bankIdExpected);
-        assertNotNull(paymentIdActual);
-        assertEquals(bankIdExpected, paymentIdActual);
+
+        assertEquals(expected, creditRequestInfo.getStatus());
+        assertEquals(creditRequestInfo.getBank_id(), orderInfo.getCredit_id());
+
+
     }
 }
-
