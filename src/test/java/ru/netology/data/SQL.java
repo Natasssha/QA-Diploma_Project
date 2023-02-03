@@ -26,11 +26,9 @@ public class SQL {
         var creditRequest = "DELETE FROM credit_request_entity";
 
         var connection = DriverManager.getConnection(url, user, password);
-        {
             runner.update(connection, order);
             runner.update(connection, payment);
             runner.update(connection, creditRequest);
-        }
     }
 
     @SneakyThrows

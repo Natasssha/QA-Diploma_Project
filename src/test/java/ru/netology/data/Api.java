@@ -9,9 +9,9 @@ import static io.restassured.RestAssured.*;
 
 public class Api {
 
+    private static final String uri = System.getProperty("sut.url");
     public static RequestSpecification requestSpecification = new RequestSpecBuilder()
-            .setBaseUri(baseURI)
-            .setPort(port)
+            .setBaseUri(uri)
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
